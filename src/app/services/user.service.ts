@@ -19,8 +19,9 @@ export class UserService {
       .pipe(map((resp : any) => this.processResponse(resp)))
    }
 
-   getUser (uuid : number) {
+   getUser (uuid : string) {
      return this.http.get(`https://randomuser.me/api/?results=${uuid}`)
+       .pipe(map((resp : any) => this.processResponse(resp)))
    }
 
    private processResponse(response : Response) {
