@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {User} from "../interfaces/user.interface";
 import {Response} from "../interfaces/response.interface";
 import {Info} from "../interfaces/info.interface";
@@ -16,6 +16,7 @@ export class UserService {
 
   getUsers (length :number = 10): Observable<any> {
     return this.http.get(`${this.userApi}/?results=${length}`)
+      .pipe(map((resp : any) => this.processResponse(resp)))
    }
 
    getUser (uuid : number) {
@@ -36,7 +37,7 @@ export class UserService {
          dateOfBirth : user.dob.date,
          phone : user.phone,
          imageUrl : user.picture.medium,
-         coordinate : {latitude : +user.coordinates.latitude, longitude : +user.coordinates.longitude }
+         coordinate : {latitude : user.location.coordinates.latitude, longitude : user.location.coordinates.longitude }
 
        }))
      }
