@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Response} from "../../interfaces/response.interface";
-import {NgForOf, NgIf} from "@angular/common";
+import {CommonModule, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MaterialModule} from "../../material/material.module";
 import {
@@ -11,10 +11,14 @@ import {
   MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
   MatHeaderRowDef,
-  MatRow, MatRowDef, MatTable
+  MatRow, MatRowDef, MatTable, MatTableModule
 } from "@angular/material/table";
-import {MatButton} from "@angular/material/button";
-import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
+import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatCard, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 @Component({
   selector: 'app-users',
@@ -24,6 +28,15 @@ import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
     NgForOf,
     RouterLink,
     MaterialModule,
+    CommonModule,
+    CommonModule,
+    MatCardModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatColumnDef,
     MatHeaderCell,
     MatCell,
@@ -38,6 +51,7 @@ import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
     MatCardContent,
     MatTable,
     MatHeaderCellDef
+
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
