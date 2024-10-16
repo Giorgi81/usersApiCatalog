@@ -1,14 +1,12 @@
 <div class="title">
-
-   <h1>User Catalog</h1>
-
+  <h1>User Catalog</h1>
   <h3>Random API Integration</h3>
-
-
 </div>
+
 <div *ngIf="response">
   <mat-card class="user-card">
     <mat-card-header>
+      <!-- Optional header content -->
     </mat-card-header>
     <mat-card-content>
       <p><strong>Seed</strong>: {{response.info.seed}}</p>
@@ -23,47 +21,56 @@
 <div class="table-container" *ngIf="response">
   <table mat-table [dataSource]="response?.results" class="mat-elevation-z8">
 
+    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let user"> {{user.uuid.substr(0,6)}} </td>
     </ng-container>
 
+    <!-- Image Column -->
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef> Image </th>
-      <td mat-cell *matCellDef="let user"> <img [src]="user.imageUrl" alt="User Image" class="user-image"> </td>
+      <td mat-cell *matCellDef="let user">
+        <img [src]="user.imageUrl" alt="User Image" class="user-image">
+      </td>
     </ng-container>
 
+    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
     </ng-container>
 
+    <!-- Email Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let user"> {{user.email}} </td>
     </ng-container>
 
+    <!-- Address Column -->
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef> Address </th>
       <td mat-cell *matCellDef="let user"> {{user.address}} </td>
     </ng-container>
 
+    <!-- Phone Column -->
     <ng-container matColumnDef="phone">
       <th mat-header-cell *matHeaderCellDef> Phone </th>
       <td mat-cell *matCellDef="let user"> {{user.phone}} </td>
     </ng-container>
 
+    <!-- Action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let user">
-        <button mat-raised-button color="primary" [routerLink]="['/user', user.uuid]">
+        <button mat-flat-button  [routerLink]="['/user', user.uuid]">
           View
         </button>
       </td>
     </ng-container>
 
+    <!-- Table Headers and Rows -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-

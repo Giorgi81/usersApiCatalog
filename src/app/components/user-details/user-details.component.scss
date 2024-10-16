@@ -1,150 +1,33 @@
-$user-background: #fff;
-$user-card-border: #e0e0e0;
-$primary-color: #3f51b5;
-$warn-color: #f44336;
-$hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-$transition-speed: 0.3s;
-
-.user-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
-  justify-content: center;
-  animation: fadeIn 0.5s ease-in;
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+.user-card-container {
+  margin-bottom: 20px;
 }
 
-.user-card-container {
-  flex: 1 1 300px;
-  max-width: 350px;
+mat-card-title {
+  color: black;
+}
+.avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .profile-card {
-  background-color: $user-background;
-  border: 1px solid $user-card-border;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  transition: transform $transition-speed, box-shadow $transition-speed;
-  position: relative;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: $hover-shadow;
-    background-color: lighten($user-background, 5%);
-  }
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 16px;
-  border: 2px solid $user-card-border;
-  transition: border-color $transition-speed;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:hover {
-    border-color: $primary-color;
-  }
-}
-
-.user-details {
-  flex: 1;
-}
-
-.user-name {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 0;
-  color: $primary-color;
-}
-
-.user-uuid {
-  font-size: 0.875rem;
-  color: gray;
-  margin: 0;
-}
-
-.user-info {
-  margin-top: 16px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .input-field {
-  margin-bottom: 12px;
-
-  label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
-  }
-
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid $user-card-border;
-    border-radius: 4px;
-    transition: border-color $transition-speed;
-    color: black;
-
-    &:focus {
-      border-color: $primary-color;
-      outline: none;
-    }
-  }
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-.card-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 16px;
+button {
+  color: black;
+}
 
-  .action-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 8px;
-    font-weight: bold;
-    color: white;
-
-    &.save-button {
-      background-color: $primary-color;
-      transition: background-color $transition-speed;
-
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
-    }
-
-    &.delete-button {
-      background-color: $warn-color;
-      transition: background-color $transition-speed;
-
-      &:hover {
-        background-color: darken($warn-color, 10%);
-      }
-    }
-  }
+.user-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
