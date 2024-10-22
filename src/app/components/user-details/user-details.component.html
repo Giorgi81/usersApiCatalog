@@ -1,5 +1,5 @@
 <div class="user-list">
-  <div *ngFor="let user of response.results" class="user-card-container">
+  <div *ngFor="let user of users" class="user-card-container">
 
     <mat-card class="profile-card" (mouseenter)="hoveredUser = user" (mouseleave)="hoveredUser = null">
       <mat-card-header>
@@ -11,6 +11,7 @@
       </mat-card-header>
 
       <mat-card-content>
+        <button class="goBack" (click)="goBack('/users')" mat-flat-button>Go Back To Users</button>
         <form class="user-form">
           <mat-form-field class="input-field" appearance="outline">
             <mat-label>First Name</mat-label>
@@ -41,8 +42,11 @@
 
       <!-- Card Footer with Action Buttons -->
       <mat-card-actions>
-        <button mat-flat-button  (click)="enableEdit()">Edit</button>
+        <button mat-flat-button  (click)="enableEdit()" class="edit">Edit</button>
+        <button mat-flat-button  (click)="saveChanges()" class="saveChanges">Save Changes</button>
+
       </mat-card-actions>
+
     </mat-card>
 
   </div>

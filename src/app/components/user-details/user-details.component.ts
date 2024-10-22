@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {MaterialModule} from "../../material/material.module";
@@ -8,6 +8,8 @@ import {MatColumnDef, MatHeaderCell, MatTable} from "@angular/material/table";
 import {MatFormField , MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
+import {Response} from "../../interfaces/response.interface";
+import {User} from "../../interfaces/user.interface";
 
 @Component({
   selector: 'app-user-details',
@@ -35,30 +37,35 @@ import {MatButton} from "@angular/material/button";
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent implements OnInit{
+  users !: any
   hoveredUser: any = null;
   edit : boolean = true
+  response !: Response
+  constructor(
+    private activatedRoute : ActivatedRoute,
+    private userApi : UserService,
+    private router : Router ) {
+  }
+
+  ngOnInit() {
+    this.users = (<User>(this.activatedRoute.snapshot.data['resolvedResponse'].results))
+  }
+
   enableEdit () {
     this.edit = false
 
   }
 
+  saveChanges () {
+    this.edit = true
 
-  response : any
-  constructor(private activatedRoute : ActivatedRoute, private userApi : UserService) {
   }
+  goBack (users : string) {
 
-  ngOnInit() {
-    this.activatedRoute.params.subscribe((params:Params) => {
-      const uuid = params['uuid']
-      if(uuid) {
-        this.userApi.getUser(uuid).subscribe(data => {
-          this.response = data
-        })
-      }
+    this.router.navigate([users])
 
 
 
-    })
   }
 
 
