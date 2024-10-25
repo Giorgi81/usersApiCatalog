@@ -68,7 +68,6 @@ export class UsersComponent implements OnInit{
 
   ngOnInit() {
   this.userApi.getUsers().subscribe(data => {
-    console.log(data)
     this.response = data
   })
   }
